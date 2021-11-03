@@ -1,2 +1,2 @@
 # epiverse.github.io
-editable at https://github.com/epiverse
+landing page at https://epiverse.github.io
