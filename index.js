@@ -3,6 +3,7 @@ console.log('UI populated by index.js')
 /* dev
 http://localhost:8000/epiverse/#url=https://episphere.github.io/gpt/export.js&ui=chatUI
 https://epiverse.github.io/#url=https://episphere.github.io/caterpillar/caterpillar.js&ui=ui
+http://localhost:8000/epiverse#url=https://episphere.github.io/caterpillar/caterpillar.js&ui=ui
 */
 
 // default UI, note you can define your own
