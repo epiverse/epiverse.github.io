@@ -26,6 +26,23 @@ if(location.hash.length==0){
 }
 
 (async function(){
+    let consoleArray = [
+        {
+            name:"Simple Chat",
+            parms: "url=https://episphere.github.io/gpt/export.js&ui=chatUI"
+        },
+        {
+            name:"Caterpillar",
+            parms: "url=https://episphere.github.io/caterpillar/caterpillar.js&ui=ui"
+        },
+        {
+            name:"something else",
+            parms: deHash(location.hash)
+        }
+    ];
+    if(location.hash.length<2){
+        location.hash=consoleArray[0].parms
+    }
     // get parms from location
     let parms={};
     (location.search+location.hash)
