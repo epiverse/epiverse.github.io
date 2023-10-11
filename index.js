@@ -53,6 +53,10 @@ if(location.hash.length==0){
         {
             name:"Caterpillar",
             parms: "url=https://episphere.github.io/caterpillar/caterpillar.js&ui=ui"
+        },
+        {
+            name:"something else",
+            parms: deHash(location.hash)
         }
     ];
     let selConsole = document.getElementById('selConsole')
@@ -68,7 +72,12 @@ if(location.hash.length==0){
     // make sure hash matches
     let epiV=JSON.parse(localStorage.epiVerse)
     epiV.hash=deHash(epiV.hash)
-    document.getElementById('selConsole').value=consoleArray.filter(c=>c.parms==epiV.hash)[0].name
+    try{
+        document.getElementById('selConsole').value=consoleArray.filter(c=>c.parms==epiV.hash)[0].name
+    }catch(err){
+        document.getElementById('selConsole').value='something else'
+    }
+    //document.getElementById('selConsole').value=consoleArray.filter(c=>c.parms==epiV.hash)[0].name
     }else{
         alert(`origin not allowed: ${location.origin+location.pathname}`)
     }
