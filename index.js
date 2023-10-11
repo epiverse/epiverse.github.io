@@ -6,9 +6,23 @@ https://epiverse.github.io/#url=https://episphere.github.io/caterpillar/caterpil
 http://localhost:8000/epiverse#url=https://episphere.github.io/caterpillar/caterpillar.js&ui=ui
 */
 
+function deHash(hs){
+    if(hs.length>0){
+        if(hs[0]=='#'){
+            hs=hs.slice(1)
+        }
+    }
+    return hs
+}
+
 // default UI, note you can define your own
 if(location.hash.length==0){
-    location.hash='url=https://episphere.github.io/gpt/export.js&ui=chatUI'
+    // location.hash='url=https://episphere.github.io/gpt/export.js&ui=chatUI'
+    location.hash = JSON.parse(localStorage.epiVerse).hash
+}else{
+    let epiV = JSON.parse(localStorage.epiVerse)
+    epiV.hash=location.hash
+    localStorage.epiVerse=JSON.stringify(epiV)
 }
 
 (async function(){
@@ -49,18 +63,15 @@ if(location.hash.length==0){
     })
     selConsole.onchange=function(evt){
         location.hash = consoleArray.filter(c=>(c.name==selConsole.value))[0].parms
-        setTimeout(location.reload,3000)
+        location.reload()
     }
-        
-        //debugger
-            
-        //selConsole.onchange(evt=>{
-            //debugger
-        //})
+    // make sure hash matches
+    let epiV=JSON.parse(localStorage.epiVerse)
+    epiV.hash=deHash(epiV.hash)
+    document.getElementById('selConsole').value=consoleArray.filter(c=>c.parms==epiV.hash)[0].name
     }else{
         alert(`origin not allowed: ${location.origin+location.pathname}`)
     }
-    //
     
 })()
 

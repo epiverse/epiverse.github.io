@@ -1,25 +1,25 @@
 console.log('epiVerse.js loaded');
 
-/*
-(async function(){
-    // select function
-    // console
-    let consoleArray = [
-        {
-            name:"Simple Chat",
-            parms: "url=https://episphere.github.io/gpt/export.js&ui=chatUI"
-        },
-        {
-            name:"Caterpillar",
-            parms: "https://episphere.github.io/caterpillar/caterpillar.js&ui=ui"
+// Managing state for epiVerse
+
+localStorage.epiVerse=localStorage.epiVerse||JSON.stringify({
+    created:Date(),
+    lastUpdate:Date(),
+    //href:location.href,
+    hash:location.hash
+});
+
+//clean hash
+(function(){
+    function deHash(hs){
+        if(hs.length>0){
+            if(hs[0]=='#'){
+                hs=hs.slice(1)
+            }
         }
-    ];
-    let selConsole = document.getElementById('selConsole')
-    consoleArray.forEach(c=>{
-        let opt = document.createElement('option')
-        selConsole.appendChild(opt)
-        opt.value=(c.name)
-    })
-    
+        return hs
+    }
+    let epiV=JSON.parse(localStorage.epiVerse)
+    epiV.hash=deHash(epiV.hash)
+    localStorage.epiVerse=JSON.stringify(epiV)
 })()
-*/
