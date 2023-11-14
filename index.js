@@ -57,6 +57,9 @@ if(location.hash.length==0){
     console.log('parms:',parms)
     // open UI in the default div
     let div = document.body.querySelector('#epiVerseDiv');
+    div.onresize=function(){
+        return Math.min(div.clientWidth,200)
+    }
     // turn this into a whitelist
     if((!!parms.url.match(/^https:\/\/episphere.github.io/)||(!!parms.url.match(/^http:\/\/localhost:8000/)))){
         (await import(parms.url))[parms.ui](div)
